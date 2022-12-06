@@ -14,7 +14,7 @@
 NOTE: This package has not been published yet. Please reach out if you'd like it to be.
 
 ```bash
-npm install @datastreamapp/api
+npm install @datastreamapp/datastreamjs
 ```
 
 ## Use
@@ -30,7 +30,7 @@ import {
   locations,
   records,
   observations
-} from '@datastreamapp/api'
+} from '@datastreamapp/datastreamjs'
 
 setAPIKey('xxxxxxxxxx') // secrets should be injected securely
 
@@ -59,7 +59,7 @@ import {
   locations,
   records,
   observations
-} from '@datastreamapp/api'
+} from '@datastreamapp/datastreamjs'
 
 setAPIKey('xxxxxxxxxx') // secrets should be injected securely
 
