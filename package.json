@@ -1,0 +1,39 @@
+{
+  "name": "@datastreamapp/api",
+  "version": "0.0.0",
+  "description": "DataStream.org API helper",
+  "type": "module",
+  "scripts": {
+    "prepare": "husky install",
+    "commit-msg": "commitlint --config commitlint.config.cjs --edit",
+    "pre-commit": "lint-staged --allow-empty",
+    "lint": "npm run lint:js",
+    "lint:js": "prettier --write **/*.js && standard --fix **/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://git@github.com/datastreamapp/datastreamjs.git"
+  },
+  "keywords": [
+    "DataStream",
+    "API",
+    "OData"
+  ],
+  "author": "willfarrell",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/datastreamapp/datastreamjs/issues"
+  },
+  "homepage": "https://github.com/datastreamapp/datastreamjs#readme",
+  "dependencies": {
+    "@datastream/fetch": "0.0.16"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.0.0",
+    "@commitlint/config-conventional": "^17.0.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^13.0.0",
+    "prettier": "^2.5.1",
+    "standard": "^17.0.0"
+  }
+}
