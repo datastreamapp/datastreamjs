@@ -11,10 +11,8 @@
 
 ## Install
 
-NOTE: This package has not been published yet. Please reach out if you'd like it to be.
-
 ```bash
-npm install @datastreamapp/datastreamjs
+npm install https://github.com/datastreamapp/datastreamjs
 ```
 
 ## Use
