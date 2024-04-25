@@ -7,9 +7,7 @@ export const setAPIKey = (apikey) => {
       Accept: 'application/vnd.api+json',
       'x-api-key': apikey
     },
-    qs: {
-      $top: 10000
-    },
+    qs: {},
     dataPath: 'value',
     rateLimit: 0.5
   })
@@ -24,10 +22,12 @@ export const request = async (path, qs) => {
 }
 
 export const metadata = async (qs) => {
+  qs.$top ??= 100
   return request('/v1/odata/v4/Metadata', qs)
 }
 
 export const locations = async (qs) => {
+  qs.$top ??= 10000
   return request('/v1/odata/v4/Locations', qs)
 }
 
@@ -59,9 +59,11 @@ const partitionRequest = async (path, qs) => {
 }
 
 export const observations = async (qs) => {
+  qs.$top ??= 10000
   return partitionRequest('/v1/odata/v4/Observations', qs)
 }
 
 export const records = async (qs) => {
+  qs.$top ??= 10000
   return partitionRequest('/v1/odata/v4/Records', qs)
 }
