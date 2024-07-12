@@ -39,7 +39,7 @@ const partitionRequest = async (path, qs) => {
   }
   const locationStream = await locations({
     $select: 'Id',
-    $filter: qs.$filter.replaceAll('LocationId', 'Id')
+    $filter: qs.$filter
   })
 
   const optionsArray = []
