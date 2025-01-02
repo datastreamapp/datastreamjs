@@ -5,6 +5,7 @@ export const setAPIKey = (apikey) => {
   fetchSetDefaults({
     headers: {
       Accept: 'application/vnd.api+json',
+      'Accept-Encoding': 'br',
       'x-api-key': apikey
     },
     qs: {},
