@@ -19,6 +19,19 @@ npm install https://github.com/datastreamapp/datastreamjs
 
 This packages works in the browser and with NodeJS.
 
+### Set your API key
+
+`setAPIKey` sends your key as the `x-api-key` header on every request, so call it
+once before any other method. See the
+[API documentation](https://github.com/datastreamapp/api-docs/tree/main/docs) for
+how to request a key and the terms of using it.
+
+```javascript
+import { setAPIKey } from '@datastreamapp/datastreamjs'
+
+setAPIKey('xxxxxxxxxx') // secrets should be injected securely
+```
+
 ### Identify your application
 
 Every request already identifies this package, for example
