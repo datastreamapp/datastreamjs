@@ -1,6 +1,6 @@
 {
   "name": "@datastreamapp/datastreamjs",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "DataStream.org API helper",
   "type": "module",
   "scripts": {
