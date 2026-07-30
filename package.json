@@ -7,6 +7,7 @@
     "prepare": "husky install",
     "commit-msg": "commitlint --config commitlint.config.cjs --edit",
     "pre-commit": "lint-staged --allow-empty",
+    "test": "node --test",
     "lint": "npm run lint:js",
     "lint:js": "prettier --write **/*.js && standard --fix **/*.js"
   },

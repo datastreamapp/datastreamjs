@@ -96,3 +96,23 @@ await pipeline([
   createWriteStream('/path/to/output.csv')
 ])
 ```
+
+### Example: result count
+
+Pass `$count` as `true` to get the number of matching rows instead of the rows
+themselves. This returns the total directly rather than a stream. See
+[URL parameters](https://github.com/datastreamapp/api-docs#url-parameters) for
+more details.
+
+```javascript
+import { setAPIKey, observations } from '@datastreamapp/datastreamjs'
+
+setAPIKey('xxxxxxxxxx') // secrets should be injected securely
+
+const count = await observations({
+  $filter: `DOI eq '10.25976/xxxx-xx00'`,
+  $count: 'true'
+})
+
+console.log(count) // '3930'
+```

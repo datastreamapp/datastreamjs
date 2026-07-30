@@ -52,14 +52,30 @@ export const request = async (path, qs) => {
   return fetchReadableStream(options)
 }
 
+const isCountRequest = (qs) => String(qs.$count) === 'true'
+
+// a count is a single value, so hand it back instead of a stream
+const firstValue = async (stream) => {
+  const { value } = await stream[Symbol.asyncIterator]().next()
+  return value
+}
+
 export const metadata = async (qs) => {
   qs.$top ??= 100
-  return request('/v1/odata/v4/Metadata', qs)
+  const path = '/v1/odata/v4/Metadata'
+  if (isCountRequest(qs)) {
+    return firstValue(await request(path, qs))
+  }
+  return request(path, qs)
 }
 
 export const locations = async (qs) => {
   qs.$top ??= 10000
-  return request('/v1/odata/v4/Locations', qs)
+  const path = '/v1/odata/v4/Locations'
+  if (isCountRequest(qs)) {
+    return firstValue(await request(path, qs))
+  }
+  return request(path, qs)
 }
 
 const matchPartitionedRegExp = /(^Id| Id|^LocationId| LocationId)/
@@ -91,10 +107,20 @@ const partitionRequest = async (path, qs) => {
 
 export const observations = async (qs) => {
   qs.$top ??= 10000
-  return partitionRequest('/v1/odata/v4/Observations', qs)
+  const path = '/v1/odata/v4/Observations'
+  // a count is dataset-wide; partitioning would return one count per location
+  if (isCountRequest(qs)) {
+    return firstValue(await request(path, qs))
+  }
+  return partitionRequest(path, qs)
 }
 
 export const records = async (qs) => {
   qs.$top ??= 10000
-  return partitionRequest('/v1/odata/v4/Records', qs)
+  const path = '/v1/odata/v4/Records'
+  // a count is dataset-wide; partitioning would return one count per location
+  if (isCountRequest(qs)) {
+    return firstValue(await request(path, qs))
+  }
+  return partitionRequest(path, qs)
 }
